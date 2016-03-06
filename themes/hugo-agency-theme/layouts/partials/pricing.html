@@ -1,0 +1,48 @@
+{{ "<!-- Pricing -->" | safeHTML }}
+<section id="pricing-table">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">{{ with .Site.Params.pricing.title }}{{ . }}{{ end }}</h2>
+                <h3 class="section-subheading text-muted">{{ with .Site.Params.pricing.subtitle }}{{ . | markdownify }}{{ end }}</h3>
+            </div>
+        </div>
+        <div class="row">
+          <div class="pricing">
+            {{ range .Site.Params.pricing.row }}
+              {{ range .list }}
+              <!--
+            <div class="col-md-4 col-sm-12 col-xs-12 col-centered">
+            -->
+            <div class="col-md-4 col-md-offset-4">
+                  <div class="pricing-table">
+                      <div class="pricing-header">
+                          <p class="pricing-title">{{ .title | markdownify }}</p>
+                          <p class="pricing-rate">{{ .rate | markdownify }}</p>
+                          <!--
+                          <a href="#" class="btn btn-custom pricing-free">無料試し</a>
+                          <a href="#" class="btn btn-custom">And Get Free Month</a>
+                        -->
+                      </div>
+
+                      <div class="pricing-list">
+                          <ul>
+                              <li><i class="fa fa-line-chart"></i>{{ .retention | markdownify }}</li>
+                              <li><i class="fa fa-repeat"></i>{{ .resolution | markdownify }}</li>
+                              <li><i class="fa fa-crosshairs"></i>{{ .round | markdownify }}</li>
+                              <li><i class="fa fa-database"></i>{{ .storage | markdownify }}</li>
+                              <!--
+                              <li><i class="fa fa-smile-o">{{ .retention | markdownify }}</li>
+                              -->
+                          </ul>
+                      </div>
+                      <div class="pricing-header">
+                          <a href="#contact"><p class="btn btn-custom pricing-title">Free Trial</p></a>
+                      </div>
+                  </div>
+          </div>
+              {{ end }}
+            {{ end }}
+        </div>
+    </div>
+</section>
