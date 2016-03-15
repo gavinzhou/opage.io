@@ -1,5 +1,5 @@
 application: opage-io
-version: 2016030602
+version: 2016031501
 runtime: python27
 api_version: 1
 threadsafe: yes
@@ -8,19 +8,30 @@ handlers:
 - url: /
   static_files: public/index.html
   upload: /
+  secure: optional
 - url: /css
   static_dir: public/css
+  secure: optional
 - url: /fonts
   static_dir: public/fonts
+  secure: optional
 - url: /font-awesome
   static_dir: public/font-awesome
+  secure: optional
 - url: /js
   static_dir: public/js
+  secure: optional
 - url: /img
   static_dir: public/img
+  secure: optional
+- url: /.well-known/acme-challenge/(.*)
+  mime_type: text/plain
+  static_files: well-known/acme-challenge/\1
+  upload: well-known/acme-challenge/.*
 - url: /(.*)/$
   static_files: public/\1/index.html
   upload: .*\.html$
+  secure: optional
 
 skip_files: |
   ^(.*/)?(
